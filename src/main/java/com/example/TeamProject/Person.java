@@ -7,5 +7,5 @@ import lombok.*;
 public class Person {
     String id;
     String pw;
-
+    String name;
 }
