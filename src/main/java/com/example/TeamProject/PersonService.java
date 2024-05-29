@@ -1,15 +1,18 @@
 package com.example.TeamProject;
 
+import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class PersonService {
-    private static final ArrayList<Person> persons = new ArrayList<>();
+    private final List<Person> persons = new ArrayList<>();
 
-    public static void addUser(Person person) {
+    public void addUser(Person person) {
         persons.add(person);
     }
 
-    public static ArrayList<Person> getUsers() {
-        return persons;
+    public List<Person> getUsers() {
+        return new ArrayList<>(persons);
     }
 }
