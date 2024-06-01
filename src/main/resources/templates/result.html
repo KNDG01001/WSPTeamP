@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register Result</title>
+</head>
+<body>
+<th:block th:replace="~{menu :: menu}"/> <!-- 최용석과 추가-->
+<div style = "text-align:center">
+    <h2 style = "text-align:center">회원가입</h2>
+    <img src="../static/images/images/KNU.jpg" height="90" width="90"/>
+</div>
+<div>
+    <form action="/register" method="post">
+        New ID : <input type = "text" name="id"> <br/>
+        New PW : <input type = "text" name="pw"> <br/>
+        Your Name : <input type = "text" name="name"><br/>
+        <input type="submit" value="가입하기">
+    </form>
+</div>
+</body>
+</html>

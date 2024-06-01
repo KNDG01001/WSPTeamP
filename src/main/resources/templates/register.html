@@ -5,17 +5,13 @@
     <title>Register Page</title>
 </head>
 <body>
-<th:block th:replace="~{menu :: menu}"/> <!-- 최용석과 추가-->
-<div style = "text-align:center">
-    <h2 style = "text-align:center">회원가입</h2>
-<img src="../static/images/images/KNU.jpg" height="90" width="90"/>
-</div>
+<h1>회원가입 결과</h1>
+<p>회원가입이 완료되었습니다</p>
 <div>
-<form action="/" method="post">
-    New ID : <input type = "text" name="NId"> <br/>
-    New PW : <input type = "text" name="NPw"> <br/>
-    <input type="submit" value="가입하기">
-</form>
+    메인 화면으로 돌아가기
+    <form action="/" method="post">
+        <input type="submit">
+    </form>
 </div>
 </body>
 </html>

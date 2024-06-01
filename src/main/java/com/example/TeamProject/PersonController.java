@@ -25,9 +25,9 @@ public class PersonController {
         return "register";
     }
 
-    @RequestMapping("/register") // 가입 정보 저장
+    @GetMapping("/register") // 가입 정보 저장
     public String registerSubmit(@ModelAttribute Person person, Model model) {
-        PersonService.addUser(person);
+        personService.addUser(person);
         model.addAttribute("person", person);
         return "result";
     }
@@ -36,6 +36,15 @@ public class PersonController {
     @ResponseBody
     public String login(@RequestParam("id") String id) {
         return id+"님 환영합니다!";
+    }
+
+    @GetMapping("/login")
+    public String loginSubmit(@RequestParam("id") String id, @RequestParam("pw") String pw, @RequestParam("name") String name) {
+        if(personService.validateUser(id, pw)) {
+            return name + "님 환영합니다!";
+        } else {
+            return "아이디 또는 비밀번호가 유효하지 않습니다. 회원가입해주세요.";
+        }
     }
 
 
