@@ -14,16 +14,15 @@ public class PersonServiceImpl implements PersonService {
         db.add(new Person("cys","1111","최용석"));
         db.add(new Person("lyj","2222","이용재"));
     }
-    private ArrayList<Person> persons = new ArrayList<>();
 
     @Override
     public ArrayList<Person> findAll() {
-        return persons;
+        return db;
     }
 
     @Override
     public Person addUser(Person person) {
-        persons.add(person);
+        db.add(person);
         return person;
     }
 
@@ -38,7 +37,8 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public boolean validateUser(String id, String pw) {
         // validateUser 구현
-        return db.stream().anyMatch(person->person.getId().equals(id)&&person.getPw().equals(pw));
+        Person user = findById(id);
+        return user != null && user.getPw().equals(pw);
     }
 
 }
