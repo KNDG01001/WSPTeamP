@@ -1,7 +1,10 @@
 package com.example.TeamProject;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 
+@Service
 public class PersonServiceImpl implements PersonService {
     private ArrayList<Person> db = new ArrayList<>();
 
@@ -26,13 +29,16 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person findById(String id) {
-        return null;
+        return db.stream()
+                .filter(person -> person.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public boolean validateUser(String id, String pw) {
         // validateUser 구현
-        return persons.stream().anyMatch(person->person.getId().equals(id)&&person.getPw().equals(pw));
+        return db.stream().anyMatch(person->person.getId().equals(id)&&person.getPw().equals(pw));
     }
 
 }

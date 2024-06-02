@@ -19,32 +19,41 @@ public class PersonController {
         return "Main";
     }
 
-    @RequestMapping("/register") // 폼 표시
-    public String registerFrom(Model model) {
+    @GetMapping("/result") //회원가입 폼으로 넘김
+    public String showForm(Model model) {
         model.addAttribute("person", new Person());
-        return "register";
+        return "result";
     }
 
-    @GetMapping("/register") // 가입 정보 저장
+    @PostMapping("/result") // 가입 정보 저장
     public String registerSubmit(@ModelAttribute Person person, Model model) {
         personService.addUser(person);
         model.addAttribute("person", person);
         return "result";
     }
 
-    @RequestMapping("/login") // 도서 리스트에서 00님 환영합니다 표시
-    @ResponseBody
-    public String login(@RequestParam("id") String id) {
-        return id+"님 환영합니다!";
+    @GetMapping("/login") //오류 발생 시
+    public String loginSubmit(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model) {
+        Person person = personService.findById(id);
+        if(personService.validateUser(id, pw)) {
+            model.addAttribute("message", person.getName()+"님 환영합니다");
+            return "redirect:/login";
+        } else {
+            model.addAttribute("message", "아이디 또는 비밀번호가 유효하지 않습니다. 회원가입을 진행해주세요");
+            return "Main";
+        }
+    }
+    @GetMapping("/register") //회원가입 폼으로 넘김
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("person", new Person());
+        return "register";
     }
 
-    @GetMapping("/login")
-    public String loginSubmit(@RequestParam("id") String id, @RequestParam("pw") String pw, @RequestParam("name") String name) {
-        if(personService.validateUser(id, pw)) {
-            return name + "님 환영합니다!";
-        } else {
-            return "아이디 또는 비밀번호가 유효하지 않습니다. 회원가입해주세요.";
-        }
+    @PostMapping("/register") // 회원가입 폼 제출
+    public String submitRegistrationForm(@ModelAttribute Person person, Model model) {
+        personService.addUser(person);
+        model.addAttribute("person", person);
+        return "register";
     }
 
 
