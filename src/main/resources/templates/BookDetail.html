@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block th:replace="~{menu :: menu}" />
+<div>
+    순서: <span th:text="${book.idx}"></span>   <br/>
+    작가: <span th:text="${book.author}"></span>   <br/>
+    제목: <span th:text="${book.title}"></span>   <br/>
+    <img th:src="${book.image}" width="200" />   <br/>
+    내용: <span th:text="${book.detail}"></span>   <br/>
+    리뷰: <span th:text="${book.review}"></span>   <br/>
+    별점: <span th:text="${book.rate}"></span>   <br/>
+    <!--<a th:href="@{/updateForm/{idx}(idx=${book.idx})}">수정</a>-->
+    <!--<a th:href="@{/delete/{idx}(idx=${book.idx})}">삭제</a>-->
+</div>
+</body>
+</html>
+
