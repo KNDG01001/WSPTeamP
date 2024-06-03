@@ -32,15 +32,15 @@ public class PersonController {
         return "result";
     }
 
-    @PostMapping("/") //오류 발생 시
+    @GetMapping("/login")
     public String loginSubmit(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model) {
         if(personService.validateUser(id, pw)) {
             Person person = personService.findById(id);
             model.addAttribute("message", person.getName()+"님 환영합니다");
-            return "redirect:/Book";
+            return "redirect:/BookList";
         } else {
-            model.addAttribute("message", "아이디 또는 비밀번호가 유효하지 않습니다. 회원가입을 진행해주세요");
-            return "Main";
+            model.addAttribute("error", "아이디 또는 비밀번호가 유효하지 않습니다. 회원가입을 진행해주세요");
+            return "error";
         }
     }
     @GetMapping("/register") //회원가입 폼으로 넘김
@@ -56,17 +56,17 @@ public class PersonController {
         return "register";
     }
 
-    @GetMapping("/Book") // Book 페이지로 이동
-    public String showBookPage(@RequestParam("id") String id, Model model) {
-        Person person = personService.findById(id);
-        if (person != null) {
-            model.addAttribute("userName", person.getName());
-            return "Book";
-        } else {
-            model.addAttribute("error", "사용자 정보를 찾을 수 없습니다.");
-            return "error";
-        }
-    }
+//    @GetMapping("/Book") // Book 페이지로 이동
+//    public String showBookPage(@RequestParam("id") String id, Model model) {
+//        Person person = personService.findById(id);
+//        if (person != null) {
+//            model.addAttribute("userName", person.getName());
+//            return "Book";
+//        } else {
+//            model.addAttribute("error", "사용자 정보를 찾을 수 없습니다.");
+//            return "error";
+//        }
+//    }
 
 
 

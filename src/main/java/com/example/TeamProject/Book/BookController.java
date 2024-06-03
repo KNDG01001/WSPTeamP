@@ -12,12 +12,12 @@ public class BookController {
     @Autowired
     private BookService BookService;
     @RequestMapping("/BookList")
-    public  String BookList(Model model) {
+    public String BookList(Model model) {
         model.addAttribute("books",BookService.findAll());
         return "BookList";
     }
 
-    @RequestMapping("/BorrowList")
+    @RequestMapping("/BorrowList{id}")
     public String BorrowList(Model model){
         return "";
     }
