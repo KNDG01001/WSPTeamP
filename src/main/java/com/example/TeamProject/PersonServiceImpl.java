@@ -21,19 +21,19 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void addUser(String id, String pw, String name) {
+    public void addUser(String userId, String userPw, String userName) {
         Person person = Person.builder()
-                .userId(id)
-                .userPw(pw)
-                .userName(name)
+                .userId(userId)
+                .userPw(userPw)
+                .userName(userName)
                 .build();
         repository.save(person);
     }
 
+
     @Override
     public PersonDTO findById(String userId) {
-        Optional<Person> person = repository.findById(userId);
-        return person.map(PersonDTO::new).orElse(null);
+        return repository.findById(userId).get().toDTO();
     }
 
     @Override

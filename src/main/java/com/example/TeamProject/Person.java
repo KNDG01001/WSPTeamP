@@ -10,21 +10,16 @@ import lombok.*;
 @Entity
 @Table(name = "person")
 @Builder
-@Setter
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private String userId; // String으로 변경
 
     private String userPw;
-
     private String userName;
-
     public Person(PersonDTO person) {
-        userId = person.getUserId();
-        userPw = person.getUserPw();
-        userName = person.getUserName();
+        this.userId = person.getUserId();
+        this.userPw = person.getUserPw();
+        this.userName = person.getUserName();
     }
 
     public PersonDTO toDTO() {

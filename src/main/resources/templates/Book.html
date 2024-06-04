@@ -5,7 +5,13 @@
     <title>Book Page</title>
 </head>
 <body>
-<h2 th:text="${userName} + '님 환영합니다'"></h2>
+됐지롱
+<p>세션 속성 값: <span th:text="${session.userId}"></span></p>
+
+<!--<h2 th:text="${session.getAttribute('userId')}"></h2>-->
+<!--<p>아이디: <span th:text="${session.getAttribute('userId')}"></span></p>-->
+<!--<p>암호: <span th:text="${session.getAttribute('userPw')}"></span></p>-->
+<!--<p>이름: <span th:text="${session.getAttribute('userName')}"></span></p>-->
 <!-- 이하 추가적인 내용 작성 -->
 </body>
 </html>
