@@ -1,12 +1,17 @@
 package com.example.TeamProject.Book;
 
+import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.List;
 
-@Getter @Setter  @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class BookDTO {
+@Getter @ToString
+@NoArgsConstructor @AllArgsConstructor
+@Entity @Table(name="books")
+@Builder
+public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idx;
     private String title;
     private String author;
@@ -15,7 +20,8 @@ public class BookDTO {
     private int rate;
 //    private String review;
 
-    public BookDTO(Book book) {
+
+    public Book(Book book) {
         idx = book.getIdx();
         title = book.getTitle();
         author = book.getAuthor();
@@ -25,7 +31,8 @@ public class BookDTO {
 //        review = book.getReview();
     }
 
-    public Book toEntity() {
-        return new Book(this.toEntity());
+    public BookDTO toDTO() {
+        return new BookDTO(this);
     }
+
 }

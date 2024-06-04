@@ -11,11 +11,16 @@ public class BookController {
 
     @Autowired
     private BookService BookService;
+
     @RequestMapping("/BookList")
     public  String BookList(Model model) {
         model.addAttribute("books",BookService.findAll());
         return "BookList";
     }
+    @RequestMapping("/list")  @ResponseBody
+    public String list() {
+    return "목록 : " + BookService.findAll();
+}
 
     @RequestMapping("/BorrowList")
     public String BorrowList(Model model){
@@ -23,18 +28,8 @@ public class BookController {
     }
 
     @RequestMapping("/BookDetail/{idx}")
-    public String BookDetail(@PathVariable("idx") int idx, Model model) {
-        try {
-            BookDTO book = BookService.findById(idx);
-            if (book == null) {
-                model.addAttribute("error", "Book not found");
-                return "error";
-            }
-            model.addAttribute("book", book);
+    public String BookDetail(@PathVariable("idx") long idx, Model model) {
+            model.addAttribute("book", BookService.findById(idx));
             return "BookDetail";
-        } catch (Exception e) {
-            model.addAttribute("error", "An error occurred while retrieving the book details");
-            return "error";
-        }
     }
 }
