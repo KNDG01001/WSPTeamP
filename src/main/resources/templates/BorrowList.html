@@ -5,7 +5,8 @@
     <title>도서 대출 현황</title>
 </head>
 <body>
-<h1>도서 대출 현항</h1>
+<th:block th:replace="~{menu :: menu}" />
+<h1>도서 대출 현황</h1>
 <table border="2">
     <tr th:each="borrows : ${borrows}"> <!--사용자 db에 등록되어있는 책 리스트 -->
     <td> [[${borrows.borrowId}]] </td>
