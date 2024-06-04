@@ -4,6 +4,5 @@ import java.util.List;
 
 public interface BookService {
     List<BookDTO> findAll();
-    BookDTO findById(long idx);
-
+    BookDTO findById(long bookId);
 }

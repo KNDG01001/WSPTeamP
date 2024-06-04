@@ -1,31 +1,27 @@
-package com.example.TeamProject.Book;
+    package com.example.TeamProject.Book;
 
-import lombok.*;
-import java.util.List;
+    import lombok.*;
 
-@Getter @Setter  @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class BookDTO {
-    private long idx;
-    private String title;
-    private String author;
-    private String image;
-    private String detail;
-    private int rate;
-//    private String review;
+    @Getter @Setter  @ToString
+    @NoArgsConstructor @AllArgsConstructor
+    public class BookDTO {
+        private long bookId;
+        private String title;
+        private String author;
+        private String image;
+        private String detail;
+        private int rate;
 
-    public BookDTO(Book book) {
-        idx = book.getIdx();
-        title = book.getTitle();
-        author = book.getAuthor();
-        image = book.getImage();
-        detail = book.getDetail();
-        rate = book.getRate();
-//        review = book.getReview();
+        public BookDTO(Book book) {
+            bookId = book.getBookId();
+            title = book.getTitle();
+            author = book.getAuthor();
+            image = book.getImage();
+            detail = book.getDetail();
+            rate = book.getRate();
+        }
+
+        public Book toEntity() {
+            return new Book(this);
+        }
     }
-
-    public Book toEntity() {
-        return new Book(this.toEntity());
-    }
-}

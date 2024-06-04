@@ -12,9 +12,9 @@ Book List  <br/>
 
 <table border="2">
     <tr th:each="b : ${books}">
-        <td> [[${b.idx}]] </td>
-        <td> <img th:src="@{|${b.image}|}" width="30" /> </td>
-        <td> <a th:href="@{/BookDetail/{idx}(idx=${b.idx})}">[[${b.title}]]</a> </td>
+        <td> [[${b.bookId}]] </td>
+        <td> <img th:src="@{${b.image}}" width="30" /> </td>
+        <td> <a th:href="@{/BookDetail/{bookId}(bookId=${b.bookId})}">[[${b.title}]]</a> </td>
     </tr>
 </table>
 </body>

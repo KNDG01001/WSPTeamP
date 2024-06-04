@@ -27,9 +27,9 @@ public class BookController {
         return "";
     }
 
-    @RequestMapping("/BookDetail/{idx}")
-    public String BookDetail(@PathVariable("idx") long idx, Model model) {
-            model.addAttribute("book", BookService.findById(idx));
+    @RequestMapping("/BookDetail/{bookId}")
+    public String BookDetail(@PathVariable("bookId") long bookId, Model model) {
+            model.addAttribute("book", BookService.findById(bookId));
             return "BookDetail";
     }
 }
