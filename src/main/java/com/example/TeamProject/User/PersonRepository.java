@@ -1,4 +1,4 @@
-package com.example.TeamProject;
+package com.example.TeamProject.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

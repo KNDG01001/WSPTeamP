@@ -1,6 +1,7 @@
 package com.example.TeamProject.Borrow;
 
 import com.example.TeamProject.Book.Book;
+import com.example.TeamProject.User.Person;
 import lombok.*;
 
 import java.util.Date;
@@ -22,7 +23,7 @@ public class BorrowDTO {
         returnDate = borrow.getReturnDate();
     }
 
-    public Borrow toEntity(User user, Book book) {
+    public Borrow toEntity(Person user, Book book) {
         return new Borrow(this, user, book);
     }
 }

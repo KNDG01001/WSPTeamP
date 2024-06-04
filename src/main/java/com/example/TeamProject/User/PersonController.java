@@ -1,4 +1,4 @@
-package com.example.TeamProject;
+package com.example.TeamProject.User;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import static java.nio.file.Files.setAttribute;
 
 @Controller
 public class PersonController {
@@ -43,7 +41,7 @@ public class PersonController {
             if (personDTO != null) {
                 String userName = personDTO.getUserName();
                 session.setAttribute("userName", userName); // 사용자 이름을 세션에 저장
-                return "redirect:/Book";
+                return "redirect:/BookList";
             } else {
                 model.addAttribute("error", "사용자 정보를 찾을 수 없습니다.");
                 return "error"; // 에러 페이지로 이동

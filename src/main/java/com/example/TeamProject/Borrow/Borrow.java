@@ -1,9 +1,10 @@
 package com.example.TeamProject.Borrow;
 
 import com.example.TeamProject.Book.Book;
-import com.example.TeamProject.User.User; //user가 들어와야함
+import com.example.TeamProject.User.Person; //user가 들어와야함
 import jakarta.persistence.*;
 import lombok.*;
+
 
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class Borrow {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Person user;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -27,7 +28,7 @@ public class Borrow {
     private Date borrowDate;
     private Date returnDate;
 
-    public Borrow(BorrowDTO borrowDTO, User user, Book book) {
+    public Borrow(BorrowDTO borrowDTO, Person user, Book book) {
         borrowId = borrowDTO.getBorrowId();
         this.user = user;
         this.book = book;

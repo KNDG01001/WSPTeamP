@@ -18,11 +18,11 @@ public class BorrowController {
     @PostMapping("/borrow")
     public String borrowBook(@RequestParam String userId, @RequestParam long bookId) {
         borrowService.borrowBook(userId, bookId);
-        return "redirect:/BorrowList";
+        return "redirect:/BorrowList/"+userId;
     }
     @PostMapping("/return")
     public String returnBook(@RequestParam String userId, @RequestParam long bookId) {
         borrowService.returnBook(userId, bookId);
-        return "redirect:/BorrowList";
+        return "redirect:/BorrowList/"+ userId;
     }
 }

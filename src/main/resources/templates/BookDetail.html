@@ -13,9 +13,9 @@
     제목: <span th:text="${book.title}"></span>   <br/>
     <img th:src="${book.image}" width="200" />   <br/>
     내용: <span th:text="${book.detail}"></span>   <br/>
-    리뷰: <span th:text="${book.review}"></span>   <br/>
+<!--    리뷰: <span th:text="${book.review}"></span>   <br/>-->
     별점: <span th:text="${book.rate}"></span>   <br/>
-    <form action="@{/borrow}" method="post">
+    <form action="/borrow" method="post">
         <input type="hidden" name="userId" th:value="${session.userId}" />
         <input type="hidden" name="bookId" th:value="${book.bookId}" />
         <button type="submit">대출</button>

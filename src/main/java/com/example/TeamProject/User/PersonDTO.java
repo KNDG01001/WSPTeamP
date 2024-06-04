@@ -1,4 +1,4 @@
-package com.example.TeamProject;
+package com.example.TeamProject.User;
 
 import lombok.*;
 

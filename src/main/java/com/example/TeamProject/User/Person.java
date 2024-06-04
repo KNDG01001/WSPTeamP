@@ -1,4 +1,4 @@
-package com.example.TeamProject;
+package com.example.TeamProject.User;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "person")
+@Table(name = "users")
 @Builder
 public class Person {
     @Id
