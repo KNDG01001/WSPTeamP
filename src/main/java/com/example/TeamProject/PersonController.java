@@ -32,7 +32,7 @@ public class PersonController {
         return "result";
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public String loginSubmit(@RequestParam("id") String id, @RequestParam("pw") String pw, Model model) {
         if(personService.validateUser(id, pw)) {
             Person person = personService.findById(id);
