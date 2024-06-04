@@ -1,44 +1,48 @@
 package com.example.TeamProject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    private ArrayList<Person> db = new ArrayList<>();
 
-    public PersonServiceImpl(){
-        System.out.println("LoginService Create");
-        db.add(new Person("ydg","1234","양동건"));
-        db.add(new Person("cys","1111","최용석"));
-        db.add(new Person("lyj","2222","이용재"));
+    @Autowired
+    private PersonRepository repository;
+
+    @Override
+    public List<PersonDTO> findAll() {
+        return repository.findAll().stream()
+                .map(PersonDTO::new)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public ArrayList<Person> findAll() {
-        return db;
+    public void addUser(String id, String pw, String name) {
+        Person person = Person.builder()
+                .userId(id)
+                .userPw(pw)
+                .userName(name)
+                .build();
+        repository.save(person);
     }
 
     @Override
-    public Person addUser(Person person) {
-        db.add(person);
-        return person;
+    public PersonDTO findById(String userId) {
+        Optional<Person> person = repository.findById(userId);
+        return person.map(PersonDTO::new).orElse(null);
     }
 
     @Override
-    public Person findById(String id) {
-        return db.stream()
-                .filter(person -> person.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+    public boolean validateUser(String userId, String userPw) {
+        PersonDTO userDto = findById(userId);
+        if (userDto != null) {
+            Person user = userDto.toEntity();
+            return user.getUserPw().equals(userPw);
+        }
+        return false;
     }
-
-    @Override
-    public boolean validateUser(String id, String pw) {
-        // validateUser 구현
-        Person user = findById(id);
-        return user != null && user.getPw().equals(pw);
-    }
-
 }
