@@ -1,5 +1,6 @@
 package com.example.TeamProject.User;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,19 +26,16 @@ public class PersonServiceImpl implements PersonService {
         repository.save(person);
     }
 
-
-    @Override
-    public PersonDTO findById(String userId) {
-        return repository.findById(userId).get().toDTO();
-    }
-
     @Override
     public boolean validateUser(String userId, String userPw) {
-        PersonDTO userDto = findById(userId);
-        if (userDto != null) {
-            Person user = userDto.toEntity();
-            return user.getUserPw().equals(userPw);
+        System.out.println(repository.findById(userId));
+        if (repository.findById(userId).isPresent()) {
+            System.out.println("good");
+            Person person = repository.findById(userId).get();
+                return person.getUserPw().equals(userPw);
         }
+        else{
         return false;
+    }
     }
 }

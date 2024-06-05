@@ -9,12 +9,12 @@
 <h1>도서 대출 현황</h1>
 <table border="2">
     <tr th:each="borrows : ${borrows}"> <!--사용자 db에 등록되어있는 책 리스트 -->
-    <td> [[${borrows.borrowId}]] </td>
+    <td> index: [[${borrows.borrowId}]] </td>
     <td> <img th:src="@{${borrows.book.image}}" width="30" /></td>
     <td> [[${borrows.book.title}]]</td>
-    <td>대출 일자= [[${borrows.borrowDate}]]</td>
-    <td>반납 기한= [[${borrows.returnDate}]]</td>
-<!--    <td><a th:href="@{/review/{borrows.book.bookId}">리뷰</a></td>-->
+    <td>대출 일자: [[${borrows.borrowDate}]]</td>
+    <td>반납 기한: [[${borrows.returnDate}]]</td>
+<!--<td><a th:href="@{/review/{}">리뷰</a></td>-->
     <td>
         <form action="/return" method="post">
             <input type="hidden" name="userId" th:value="${session.userId}" />

@@ -7,7 +7,4 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, String> {
-    @Query(value = "SELECT * FROM person", nativeQuery = true)
-    List<Person> listM();
-}
+public interface PersonRepository extends JpaRepository<Person, String> {}
