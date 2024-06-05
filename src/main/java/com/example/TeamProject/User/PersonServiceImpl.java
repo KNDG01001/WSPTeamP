@@ -20,12 +20,8 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void addUser(String userId, String userPw, String userName) {
-        Person person = Person.builder()
-                .userId(userId)
-                .userPw(userPw)
-                .userName(userName)
-                .build();
+    public void addUser(PersonDTO personDTO) {
+        Person person = personDTO.toEntity();
         repository.save(person);
     }
 
