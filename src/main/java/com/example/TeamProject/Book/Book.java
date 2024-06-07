@@ -19,8 +19,6 @@ public class Book {
     private String author;
     private String image;
     private String detail;
-
-    private String lyj;
     private String review;
 
 
@@ -30,7 +28,6 @@ public class Book {
         author = book.getAuthor();
         image = book.getImage();
         detail = book.getDetail();
-        review = book.getReview();
     }
 
     public BookDTO toDTO() {
