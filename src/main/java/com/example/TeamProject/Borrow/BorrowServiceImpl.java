@@ -15,8 +15,8 @@ import java.util.List;
 public class BorrowServiceImpl implements BorrowService {
     //시간 계산
     LocalDate now = LocalDate.now();
-    LocalDate weekLater = now.plusWeeks(1);
-    Date returnDate = java.sql.Date.valueOf(weekLater);
+    LocalDate oneWeekLater = now.plusWeeks(1);
+    Date returnDate = java.sql.Date.valueOf(oneWeekLater);
 
     @Autowired
     private BorrowRepository borrowRepository; // 대출
@@ -31,8 +31,8 @@ public class BorrowServiceImpl implements BorrowService {
     }
     @Override // 대출 구현
     public void borrowBook(String userId, long bookId) {
-        Person user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다"));
-        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("책을 찾을 수 없습니다"));
+        Person user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Can't find user"));
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Can't find book"));
         Borrow access = borrowRepository.findByUserUserIdAndBookBookId(userId, bookId); // 해당 유저ID가 빌린 책 ID로 찾아서 이미 이 책을 빌렸으면 다시 못빌리게
         if(access!=null){ //이미 있으면
             System.out.println("Already Borrowed");
