@@ -20,7 +20,7 @@ public class Book {
     private String image;
     private String detail;
 
-
+    private String lyj;
     private String review;
 
 
