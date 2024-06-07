@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+리뷰 작성<br/>
+    <span th: text="${book.title}"><br/>
+    <td rowspan="2">이미지</td>
+    <form action="/Review" method="post" enctype="multipart/form-data">
+    <td>별점input<input type="text" name="rate"> </td>
+    <td>리뷰input : <textarea rows = "5" cols="40" name="review"></textarea></td>
+    <button type="submit">리뷰 입력</button>
+    </form>
+
+
+
+
+
+
+
+
+</body>
+</html>
