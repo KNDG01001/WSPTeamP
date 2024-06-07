@@ -26,17 +26,16 @@ public class PersonController {
             model.addAttribute("error", "아이디와 비밀번호를 모두 입력해주세요");
             return "error";
         }
-        if (personService.validateUser(userId, userPw)) {
+        if (personService.authorize(userId, userPw)) {
             HttpSession session = request.getSession();
             session.setAttribute("userId", userId);
             session.setAttribute("userPw", userPw);
             return "redirect:/BookList";
         } else {
-            model.addAttribute("error", "아이디 또는 비밀번호가 유효하지 않습니다. 회원가입을 진행해주세요");
+            model.addAttribute("error", "아이디 또는 비밀번호가 유효하지 않습니다.");
             return "error";
         }
     }
-
     @GetMapping("/register") // 회원가입 폼으로 이동
     public String showRegistrationForm(Model model) {
         model.addAttribute("person", new Person());
@@ -45,9 +44,21 @@ public class PersonController {
 
     @PostMapping("/register") // 회원가입 폼 제출
     public String submitRegistrationForm(@ModelAttribute PersonDTO personDTO, Model model) {
-        personService.addUser(personDTO);
-        model.addAttribute("person", personDTO);
-        return "result"; // 가입 결과 페이지로 이동
+        if (personDTO.getUserId().isEmpty() ||personDTO.getUserPw().isEmpty()||personDTO.getUserName().isEmpty()) { // 값이 비어있는 경우
+            model.addAttribute("error", "아이디와 비밀번호,이름을 모두 입력해주세요");
+            return "error";
+        }
+        else{
+            if(personService.duplicateCheck(personDTO)){
+                personService.addUser(personDTO);
+                model.addAttribute("person",personDTO);
+                return "result"; // 가입 결과 페이지로 이동
+            }
+            else{
+                model.addAttribute("error", "중복된 아이디입니다. 다시 시도해주세요.");
+                return "error";
+            }
+        }
     }
 }
 

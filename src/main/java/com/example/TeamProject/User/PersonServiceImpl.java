@@ -13,14 +13,10 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRepository repository;
 
-    @Override
     public void addUser(PersonDTO personDTO) {
         Person person = personDTO.toEntity();
         repository.save(person);
-    }
-
-    @Override
-    public boolean validateUser(String userId, String userPw) {
+    }public boolean authorize(String userId, String userPw) {
         if (repository.findById(userId).isPresent()) {
             Person person = repository.findById(userId).get();
                 return person.getUserPw().equals(userPw);
@@ -28,5 +24,8 @@ public class PersonServiceImpl implements PersonService {
         else{
             return false;
         }
+    }
+    public boolean duplicateCheck(PersonDTO personDTO) {
+        return repository.findById(personDTO.getUserId()).isEmpty();
     }
 }
