@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block th:replace="~{menu :: menu}" />
+<div>
+    순서: <span th:text="${book.bookId}"></span>   <br/>
+    작가: <span th:text="${book.author}"></span>   <br/>
+    제목: <span th:text="${book.title}"></span>   <br/>
+    <img th:src="${book.image}" width="200" />   <br/>
+    내용: <span th:text="${book.detail}"></span>   <br/>
+    리뷰: <span th:text="${book.review}"></span> <br/>
+    <form action="/borrow" method="post">
+        <input type="hidden" name="userId" th:value="${session.userId}" />
+        <input type="hidden" name="bookId" th:value="${book.bookId}" />
+        <button type="submit">대출</button>
+    </form></button>
+    </form></div>
+</body>
+</html>

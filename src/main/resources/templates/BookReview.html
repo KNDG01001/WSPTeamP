@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 리뷰 작성</title>
+</head>
+<body>
+<h1>도서 리뷰 작성</h1>
+<div th:each="borrow : ${borrows}">
+    <form action="/review" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="userId" th:value="${session.userId}" />
+        <input type="hidden" name="bookId" th:value="${borrow.book.bookId}" />
+        <h2>[[${borrow.book.title}]]</h2>
+        <img th:src="@{${borrow.book.image}}" width="100" /><br/>
+        리뷰 입력: <textarea rows="5" cols="40" name="review"></textarea><br/>
+        별점 입력: <input type="text" name="rate"><br/>
+        <button type="submit">리뷰 입력</button>
+    </form>
+</div>
+</body>
+</html>

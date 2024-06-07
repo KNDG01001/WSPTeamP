@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<th:block th:replace="~{menu::menu}" />
+
+Book List  <br/>
+
+<table border="2">
+    <tr th:each="b : ${books}">
+        <td> [[${b.bookId}]] </td>
+        <td> <img th:src="@{${b.image}}" width="30" /> </td>
+        <td> <a th:href="@{/BookDetail/{bookId}(bookId=${b.bookId})}">[[${b.title}]]</a> </td>
+    </tr>
+</table>
+</body>
+</html>
