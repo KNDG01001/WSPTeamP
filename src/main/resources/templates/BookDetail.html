@@ -14,6 +14,10 @@
     <img th:src="${book.image}" width="200" />   <br/>
     내용: <span th:text="${book.detail}"></span>   <br/>
     리뷰: <span th:text="${book.review}"></span> <br/>
+    <h2>리뷰</h2>
+    <div th:each="review : ${reviews}">
+        <p th:text="${review.review}"></p>
+    </div>
     <form action="/borrow" method="post">
         <input type="hidden" name="userId" th:value="${session.userId}" />
         <input type="hidden" name="bookId" th:value="${book.bookId}" />

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface ReviewService {
-
-    List<ReviewDTO> getReviewsByBook(long bookId);
-    void addReview(long bookId, String userId);
+    ReviewDTO reviewWrite(long bookId);
+    Review createReview(ReviewDTO reviewDTO);
+    List<Review> findReviewsByBookId(long bookId);
 
 }

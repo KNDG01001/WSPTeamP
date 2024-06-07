@@ -28,9 +28,8 @@ public class Review {
         reviewId=reviewDTO.getReviewId();
         this.book = book;
         this.user = user;
-        review = reviewDTO.getReview();
+        this.review = reviewDTO.getReview();
     }
-
 
     public ReviewDTO toDTO(){
         return new ReviewDTO(this);

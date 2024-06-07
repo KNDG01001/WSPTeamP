@@ -14,29 +14,39 @@ import java.util.List;
 @Service
 public class ReviewServiceImpl implements ReviewService {
     @Autowired
-    private ReviewRepository reviewRepository;
+    private ReviewRepository reviewRepository; //리뷰
 
     @Autowired
-    private BookRepository bookRepository;
+    private BookRepository bookRepository; //책
 
     @Autowired
-    private PersonRepository userRepository;
+    private PersonRepository userRepository; //유저
+
+    @Autowired
+    private BorrowRepository borrowRepository; //대출
 
     @Override
-    public List<ReviewDTO> getReviewsByBook(long bookId) {
-        List<Review> reviews = reviewRepository.findByBookBookId(bookId);
-        return reviews.stream().map(ReviewDTO::new).collect(Collectors.toList());
-    }
-
-    @Override
-    public void addReview(long bookId, String userId, String review) {
+    public ReviewDTO reviewWrite(long bookId) {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
-        Person user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         ReviewDTO reviewDTO = new ReviewDTO();
         reviewDTO.setBookId(bookId);
-        reviewDTO.setUserId(userId);
-        reviewDTO.setReview(review);
-        Review reviewEntity = reviewDTO.toEntity(user, book);
-        reviewRepository.save(reviewEntity);
+        return reviewDTO;
     }
+
+    @Override
+    public Review  createReview(ReviewDTO reviewDTO) {
+        Book book = bookRepository.findById(reviewDTO.getBookId()).orElseThrow(() -> new RuntimeException("Book not found"));
+        Person user = userRepository.findById(reviewDTO.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+        Review review = new Review(reviewDTO, book, user);
+        return reviewRepository.save(review);
+    }
+
+    @Override
+    public List<Review> findReviewsByBookId(long bookId) {
+        return reviewRepository.findByBook_BookId(bookId);
+    }
+
+
+
+
 }
