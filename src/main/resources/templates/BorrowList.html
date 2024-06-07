@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>도서 대출 현황</title>
@@ -7,21 +7,27 @@
 <body>
 <th:block th:replace="~{menu :: menu}" />
 <h1>도서 대출 현황</h1>
-<table border="2">
+<table border="1">
+    <tr>
+        <th>표지 </th>
+        <th>책 제목</th>
+        <th>대출 일자</th>
+        <th>반납 기한</th>
+        <th>반납</th>
+    </tr>
     <tr th:each="borrows : ${borrows}"> <!--사용자 db에 등록되어있는 책 리스트 -->
-    <td> index: [[${borrows.borrowId}]] </td>
-    <td> <img th:src="@{${borrows.book.image}}" width="30" /></td>
-    <td> [[${borrows.book.title}]]</td>
-    <td>대출 일자: [[${borrows.borrowDate}]]</td>
-    <td>반납 기한: [[${borrows.returnDate}]]</td>
-<!--<td><a th:href="@{/review/{}">리뷰</a></td>-->
-    <td>
-        <form action="/return" method="post">
-            <input type="hidden" name="userId" th:value="${session.userId}" />
-            <input type="hidden" name="bookId" th:value="${borrows.book.bookId}" />
-            <button type="submit">반납</button>
-        </form>
-    </td>
+        <td><img th:src="@{${borrows.book.image}}" width="30" /></td>
+        <td>[[${borrows.book.title}]]</td>
+        <td th:text="${#dates.format(borrows.borrowDate, 'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(borrows.returnDate, 'yyyy-MM-dd')}"></td>
+        <!--<td><a th:href="@{/review/{}">리뷰</a></td>-->
+        <td>
+            <form action="/return" method="post">
+                <input type="hidden" name="userId" th:value="${session.userId}" />
+                <input type="hidden" name="bookId" th:value="${borrows.book.bookId}" />
+                <button type="submit">반납</button>
+            </form>
+        </td>
     </tr>
 </table>
 
