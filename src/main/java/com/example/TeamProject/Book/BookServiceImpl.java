@@ -12,6 +12,7 @@ public class BookServiceImpl implements  BookService{
     @Override
     public List<BookDTO> findAll() {return repository.findAll().stream().map(BookDTO::new).collect(Collectors.toList());}
     @Override
-        public BookDTO findById(long bookId) {return repository.findById(bookId).get().toDTO();}
+    public BookDTO findById(long bookId) {return repository.findById(bookId).get().toDTO();}
 
+    public void updateBook(BookDTO bookDTO){repository.save(bookDTO.toEntity());};
 }
