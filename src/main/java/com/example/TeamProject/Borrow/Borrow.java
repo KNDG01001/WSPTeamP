@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Getter @ToString
 @NoArgsConstructor @AllArgsConstructor
-@Entity @Table(name = "borrow")
+@Entity @Table(name = "borrows")
 @Builder
 public class Borrow {
     @Id

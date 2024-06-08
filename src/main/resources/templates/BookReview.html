@@ -7,13 +7,14 @@
 <body>
 <th:block th:replace="~{menu :: menu}" />
 <h1>도서 리뷰 작성</h1>
-    <form action="/reviewWrite" method="post" enctype="multipart/form-data">
+    <h2 th:text="${book.title}"></h2>
+    <img th:src="@{${book.image}}" width="100" /><br/>
+    <form action="/reviewWrite" method="post">
         <input type="hidden" name="userId" th:value="${session.userId}" />
         <input type="hidden" name="bookId" th:value="${book.bookId}" />
-        <h2 th:text="${book.title}"></h2>
-        <img th:src="@{${book.image}}" width="100" /><br/>
-        리뷰 입력: <textarea rows="5" cols="40" name="review"></textarea><br/>
-        <button type="submit">리뷰 입력</button>
+        리뷰 입력:<br>
+        <textarea rows="5" cols="40" name="review"></textarea><br/>
+        <button type="submit">저장</button>
     </form>
 </body>
 </html>

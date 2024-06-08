@@ -6,7 +6,7 @@ CREATE TABLE users (
     user_pw VARCHAR(255) NOT NULL,
     user_name VARCHAR(255) NOT NULL,
 PRIMARY KEY (user_id));
-
+users
 CREATE TABLE books (
 book_id int(10) NOT NULL AUTO_INCREMENT ,
 title VARCHAR(255) NOT NULL,
@@ -16,7 +16,7 @@ detail VARCHAR(255) NOT NULL,
 review VARCHAR(255) NOT NULL,
 PRIMARY KEY (book_id));
 
-CREATE TABLE borrow (
+CREATE TABLE borrows (
     borrow_id int(10) AUTO_INCREMENT,
     user_id VARCHAR(255) NOT NULL,
     book_id int(10) NOT NULL,
