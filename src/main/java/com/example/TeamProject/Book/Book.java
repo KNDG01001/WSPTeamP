@@ -19,7 +19,7 @@ public class Book {
     private String author;
     private String image;
     private String detail;
-    private String review;
+
 
 
     public Book(BookDTO book) {

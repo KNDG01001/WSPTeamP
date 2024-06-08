@@ -13,7 +13,7 @@
         private String author;
         private String image;
         private String detail;
-        private String review;
+
 
         public BookDTO(Book book) {
             bookId = book.getBookId();
@@ -21,7 +21,7 @@
             author = book.getAuthor();
             image = book.getImage();
             detail = book.getDetail();
-            review = book.getReview();
+
         }
 
         public Book toEntity() {
