@@ -28,4 +28,9 @@ public class PersonServiceImpl implements PersonService {
     public boolean duplicateCheck(PersonDTO personDTO) {
         return repository.findById(personDTO.getUserId()).isEmpty();
     }
+    public PersonDTO findUserById(String userId) {
+        return repository.findById(userId).get().toDTO();
+    }
+
+
 }
