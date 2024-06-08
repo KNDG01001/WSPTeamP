@@ -28,6 +28,11 @@ public class PersonController {
         }
         if (personService.authorize(userId, userPw)) {
             HttpSession session = request.getSession();
+
+            PersonDTO user = personService.findUserById(userId);
+            if (user != null) {
+                session.setAttribute("userName", user.getUserName()); // 사용자 이름을 세션에 추가
+            }
             session.setAttribute("userId", userId);
             session.setAttribute("userPw", userPw);
             return "redirect:/BookList";
