@@ -7,7 +7,7 @@
 
 <body>
 <th:block th:replace="~{menu::menu}" />
-
+<div th:text="${session.userName}+ '님 환영합니다'"></div>
 Book List  <br/>
 
 <table border="2">
