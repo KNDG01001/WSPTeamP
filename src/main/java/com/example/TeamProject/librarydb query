@@ -13,7 +13,7 @@ title VARCHAR(255) NOT NULL,
 author VARCHAR(255) NOT NULL,
 image VARCHAR(255) NOT NULL,
 detail VARCHAR(255) NOT NULL,
-rate int(10) NOT NULL,
+review VARCHAR(255) NOT NULL,
 PRIMARY KEY (book_id));
 
 CREATE TABLE borrow (
@@ -35,12 +35,12 @@ CREATE TABLE reviews (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
-INSERT INTO books (title, author, image, detail,rate ) VALUES ("이상한 책들의 도서관","에드워드 브룩","/images/library of strange books.jpg","희귀 서적 수집가가 안내하는 역사상 가장 기이하고 저속하며 발칙한 책들의 세계",0);
-INSERT INTO books (title, author, image, detail,rate ) VALUES ("계급 천장","샘프리드먼, 대니얼로리슨","/images/class ceiling.jpg","커리어와 인생에 드리운 긴 그림자",0);
-INSERT INTO books (title, author, image, detail,rate ) VALUES ("모순","양귀자","/images/contradiction.jpg","양장본 Hardcover",0);
-INSERT INTO books (title, author, image, detail,rate ) VALUES ("아주 작은 대화의 기술","레일 라운즈","/images/A very small conversation.jpg","힘들이지 않고 사람의 마음을 얻는 80가지 인간관계의 기술",0);
-INSERT INTO books (title, author, image, detail,rate ) VALUES ("사랑 사건 오류 ", "김나현","/images/incident love error.jpg","김나현 장편소설",0);
-INSERT INTO books (title, author, image, detail,rate ) VALUES ("먼 곳에서","에르난 디아스", "/images/from afar.jpg","에르난 디아스 장편소설",0);
+INSERT INTO books (title, author, image, detail,review ) VALUES ("이상한 책들의 도서관","에드워드 브룩","/images/library of strange books.jpg","희귀 서적 수집가가 안내하는 역사상 가장 기이하고 저속하며 발칙한 책들의 세계","");
+INSERT INTO books (title, author, image, detail,review ) VALUES ("계급 천장","샘프리드먼, 대니얼로리슨","/images/class ceiling.jpg","커리어와 인생에 드리운 긴 그림자","");
+INSERT INTO books (title, author, image, detail,review ) VALUES ("모순","양귀자","/images/contradiction.jpg","양장본 Hardcover","");
+INSERT INTO books (title, author, image, detail,review ) VALUES ("아주 작은 대화의 기술","레일 라운즈","/images/A very small conversation.jpg","힘들이지 않고 사람의 마음을 얻는 80가지 인간관계의 기술","");
+INSERT INTO books (title, author, image, detail,review) VALUES ("사랑 사건 오류 ", "김나현","/images/incident love error.jpg","김나현 장편소설","");
+INSERT INTO books (title, author, image, detail,review) VALUES ("먼 곳에서","에르난 디아스", "/images/from afar.jpg","에르난 디아스 장편소설","");
 INSERT INTO users (user_id, user_pw,user_name)  VALUES ("ydg12","1234","양동건");
 INSERT INTO users (user_id, user_pw,user_name)  VALUES ("lyj01","1223","이용재");
 INSERT INTO users (user_id, user_pw,user_name)  VALUES ("cys08","1323","최용석");

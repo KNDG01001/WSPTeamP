@@ -14,6 +14,7 @@
         <th>대출 일자</th>
         <th>반납 기한</th>
         <th>반납</th>
+        <th>리뷰</th>
     </tr>
     <tr th:each="borrows : ${borrows}"> <!--사용자 db에 등록되어있는 책 리스트 -->
         <td><img th:src="@{${borrows.book.image}}" width="30" /></td>
@@ -26,6 +27,13 @@
                 <input type="hidden" name="userId" th:value="${session.userId}" />
                 <input type="hidden" name="bookId" th:value="${borrows.book.bookId}" />
                 <button type="submit">반납</button>
+            </form>
+        </td>
+        <td>
+            <form action="/review" method="post">
+                <input type="hidden" name="userId" th:value="${session.userId}" />
+                <input type="hidden" name="bookId" th:value="${borrows.book.bookId}" />
+                <button type="submit">리뷰</button>
             </form>
         </td>
     </tr>

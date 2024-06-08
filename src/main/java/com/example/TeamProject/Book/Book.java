@@ -16,7 +16,6 @@ public class Book {
     private String author;
     private String image;
     private String detail;
-    private int rate;
 
 
     public Book(BookDTO book) {
@@ -25,7 +24,6 @@ public class Book {
         author = book.getAuthor();
         image = book.getImage();
         detail = book.getDetail();
-        rate = book.getRate();
     }
     public BookDTO toDTO() {
         return new BookDTO(this);

@@ -10,7 +10,7 @@
         private String author;
         private String image;
         private String detail;
-        private int rate;
+
 
         public BookDTO(Book book) {
             bookId = book.getBookId();
@@ -18,7 +18,6 @@
             author = book.getAuthor();
             image = book.getImage();
             detail = book.getDetail();
-            rate = book.getRate();
         }
 
         public Book toEntity() {
