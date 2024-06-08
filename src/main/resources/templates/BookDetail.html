@@ -12,10 +12,17 @@
     제목: <span th:text="${book.title}"></span>   <br/>
     <img th:src="${book.image}" width="200" />   <br/>
     내용: <span th:text="${book.detail}"></span>   <br/>
+    <div>
     <form action="/BookEdit" method="get">
         <input type="hidden" name="bookId" th:value="${book.bookId}" />
-        <button type="submit">수정</button>
+        <button type="submit">책 내용 수정</button>
     </form>
+    <form action="/borrow" method="post">
+        <input type="hidden" name="userId" th:value="${session.userId}" />
+        <input type="hidden" name="bookId" th:value="${book.bookId}" />
+        <button type="submit">대출</button>
+    </form>
+    </div>
 </div>
 <table border="1">
         <tr>
@@ -26,11 +33,6 @@
             <td th:text="${review.user.userName}"></td>
             <td th:text="${review.review}"></td>
         </tr>
-    </table>
-    <form action="/borrow" method="post">
-        <input type="hidden" name="userId" th:value="${session.userId}" />
-        <input type="hidden" name="bookId" th:value="${book.bookId}" />
-        <button type="submit">대출</button>
-    </form></div>
+</table>
 </body>
 </html>
