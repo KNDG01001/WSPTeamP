@@ -6,7 +6,7 @@
 </head>
 <body>
 <th:block th:replace="~{menu :: menu}" />
-<h1>도서 대출 현황</h1>
+<h1 th:text="${session.userName}+'님의 대출 현황'"></h1>
 <table border="1">
     <tr>
         <th>표지 </th>
@@ -18,7 +18,7 @@
     </tr>
     <tr th:each="borrows : ${borrows}"> <!--사용자 db에 등록되어있는 책 리스트 -->
         <td><img th:src="@{${borrows.book.image}}" width="30" /></td>
-        <td>[[${borrows.book.title}]]</td>
+        <td> <a th:href="@{/BookDetail/{bookId}(bookId=${borrows.book.bookId})}">[[${borrows.book.title}]]</a> </td>
         <td th:text="${#dates.format(borrows.borrowDate, 'yyyy-MM-dd')}"></td>
         <td th:text="${#dates.format(borrows.returnDate, 'yyyy-MM-dd')}"></td>
         <!--<td><a th:href="@{/review/{}">리뷰</a></td>-->
