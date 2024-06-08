@@ -13,10 +13,16 @@
     제목: <span th:text="${book.title}"></span>   <br/>
     <img th:src="${book.image}" width="200" />   <br/>
     내용: <span th:text="${book.detail}"></span>   <br/>
-    <h2>리뷰</h2>
-    <div th:each="review : ${reviews}">
-        <p th:text="${review.review}"></p>
-    </div>
+    <table border="1">
+        <tr>
+            <th>작성자</th>
+            <th>리뷰</th>
+        </tr>
+        <tr th:each="review : ${reviews}">
+            <td th:text="${review.user.userName}"></td>
+            <td th:text="${review.review}"></td>
+        </tr>
+    </table>
     <form action="/borrow" method="post">
         <input type="hidden" name="userId" th:value="${session.userId}" />
         <input type="hidden" name="bookId" th:value="${book.bookId}" />
