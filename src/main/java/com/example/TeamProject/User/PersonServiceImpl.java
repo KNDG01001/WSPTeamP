@@ -1,11 +1,7 @@
 package com.example.TeamProject.User;
 
-import com.sun.tools.jconsole.JConsoleContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {

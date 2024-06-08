@@ -1,7 +1,7 @@
 package com.example.TeamProject.Borrow;
 
 import com.example.TeamProject.Book.Book;
-import com.example.TeamProject.User.Person; //user가 들어와야함
+import com.example.TeamProject.User.Person;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,6 +1,5 @@
 package com.example.TeamProject.Review;
 
-import com.example.TeamProject.Book.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
