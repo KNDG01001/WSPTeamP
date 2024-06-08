@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 내용 수정</title>
+</head>
+<body>
+<h1>도서 내용 수정</h1>
+<form action="/BookEdit" method="post">
+    <input type="hidden" name="bookId" th:value="${book.bookId}" />
+    작가:<input type="text" name="author" th:value="${book.author}" /><br/>
+    제목:<input type="text" name="title" th:value="${book.title}" /><br/>
+    이미지:<input type="text" name="image" th:value="${book.image}" /><br/>
+    내용:<textarea rows="5" cols="40" name="detail" th:text="${book.detail}"></textarea><br/>
+    <button type="submit">수정</button>
+</form>
+</body>
+</html>

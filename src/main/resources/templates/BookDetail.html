@@ -12,7 +12,12 @@
     제목: <span th:text="${book.title}"></span>   <br/>
     <img th:src="${book.image}" width="200" />   <br/>
     내용: <span th:text="${book.detail}"></span>   <br/>
-    <table border="1">
+    <form action="/BookEdit" method="get">
+        <input type="hidden" name="bookId" th:value="${book.bookId}" />
+        <button type="submit">수정</button>
+    </form>
+</div>
+<table border="1">
         <tr>
             <th>작성자</th>
             <th>리뷰</th>
