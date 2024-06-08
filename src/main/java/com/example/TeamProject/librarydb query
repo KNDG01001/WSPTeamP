@@ -6,7 +6,7 @@ CREATE TABLE users (
     user_pw VARCHAR(255) NOT NULL,
     user_name VARCHAR(255) NOT NULL,
 PRIMARY KEY (user_id));
-users
+
 CREATE TABLE books (
 book_id int(10) NOT NULL AUTO_INCREMENT ,
 title VARCHAR(255) NOT NULL,
@@ -39,8 +39,8 @@ INSERT INTO books (title, author, image, detail,review ) VALUES ("이상한 책�
 INSERT INTO books (title, author, image, detail,review ) VALUES ("계급 천장","샘프리드먼, 대니얼로리슨","/images/class ceiling.jpg","커리어와 인생에 드리운 긴 그림자","");
 INSERT INTO books (title, author, image, detail,review ) VALUES ("모순","양귀자","/images/contradiction.jpg","양장본 Hardcover","");
 INSERT INTO books (title, author, image, detail,review ) VALUES ("아주 작은 대화의 기술","레일 라운즈","/images/A very small conversation.jpg","힘들이지 않고 사람의 마음을 얻는 80가지 인간관계의 기술","");
-INSERT INTO books (title, author, image, detail,review) VALUES ("사랑 사건 오류 ", "김나현","/images/incident love error.jpg","김나현 장편소설","");
-INSERT INTO books (title, author, image, detail,review) VALUES ("먼 곳에서","에르난 디아스", "/images/from afar.jpg","에르난 디아스 장편소설","");
+INSERT INTO books (title, author, image, detail,review) VALUES ("사랑 사건 오류 ", "김나현","/images/incident love error.jpg","세계 속 세계 속 세계를 만들어 우리가 끝내 가닿고자 했던 곳","");
+INSERT INTO books (title, author, image, detail,review) VALUES ("먼 곳에서","에르난 디아스", "/images/from afar.jpg","19세기 스웨덴에서 미국으로 건너간 한 남자가 절대 고독 속에서 미 대륙의 광야를 헤매는 이야기","");
 INSERT INTO users (user_id, user_pw,user_name)  VALUES ("ydg12","1234","양동건");
 INSERT INTO users (user_id, user_pw,user_name)  VALUES ("lyj01","1223","이용재");
 INSERT INTO users (user_id, user_pw,user_name)  VALUES ("cys08","1323","최용석");
