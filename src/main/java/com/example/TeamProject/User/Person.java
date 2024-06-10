@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 public class Person {
     @Id
-    private String userId; // String으로 변경
+    private String userId;
 
     private String userPw;
     private String userName;
