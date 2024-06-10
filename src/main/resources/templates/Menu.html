@@ -2,6 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="menu">
     <a href="/BookList"> [도서 목록] </a>
-    <a th:href="@{'/BorrowList/' + ${session.userId}}"> [도서 현황] </a>
-
+    <a th:href="@{'/BorrowList/' + ${session.userId}}"> [대출 현황] </a>
+    <a href="/">[로그아웃]</a>
 </div>
