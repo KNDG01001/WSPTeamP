@@ -23,7 +23,7 @@ CREATE TABLE borrows (
     borrow_date DATE,
     return_date DATE,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE, -- 같이 지워지도록
-    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE, -- https://blog.naver.com/PostView.nhn?blogId=skydiv1&logNo=221370768716&parentCategoryNo=&categoryNo=24&viewDate=&isShowPopularPosts=true&from=search
 PRIMARY KEY(borrow_id));
 
 CREATE TABLE reviews (
@@ -37,8 +37,8 @@ CREATE TABLE reviews (
 
 INSERT INTO books (title, author, image, detail,review ) VALUES ("이상한 책들의 도서관","에드워드 브룩","/images/library of strange books.jpg","희귀 서적 수집가가 안내하는 역사상 가장 기이하고 저속하며 발칙한 책들의 세계","");
 INSERT INTO books (title, author, image, detail,review ) VALUES ("계급 천장","샘프리드먼, 대니얼로리슨","/images/class ceiling.jpg","커리어와 인생에 드리운 긴 그림자","");
-INSERT INTO books (title, author, image, detail,review ) VALUES ("모순","양귀자","/images/contradiction.jpg","스물다섯 살 미혼여성 안진진을 통해 모순으로 가득한 우리의 인생을 들여다본다","");
-INSERT INTO books (title, author, image, detail,review ) VALUES ("아주 작은 대화의 기술","레일 라운즈","/images/A very small conversation.jpg","힘들이지 않고 사람의 마음을 얻는 80가지 인간관계의 기술","");
+INSERT INTO books (title, author, image, detail,review ) VALUES ("모순","양귀자","/images/contradiction.jpg","스물다섯 살 미혼여성 안진진을 통해 모순으로 가득한 우리의 인생을 들여다본다.","");
+INSERT INTO books (title, autbookshor, image, detail,review ) VALUES ("아주 작은 대화의 기술","레일 라운즈","/images/A very small conversation.jpg","힘들이지 않고 사람의 마음을 얻는 80가지 인간관계의 기술","");
 INSERT INTO books (title, author, image, detail,review) VALUES ("사랑 사건 오류 ", "김나현","/images/incident love error.jpg","세계 속 세계 속 세계를 만들어 우리가 끝내 가닿고자 했던 곳","");
 INSERT INTO books (title, author, image, detail,review) VALUES ("먼 곳에서","에르난 디아스", "/images/from afar.jpg","19세기 스웨덴에서 미국으로 건너간 한 남자가 절대 고독 속에서 미 대륙의 광야를 헤매는 이야기","");
 INSERT INTO users (user_id, user_pw,user_name)  VALUES ("ydg12","1234","양동건");
