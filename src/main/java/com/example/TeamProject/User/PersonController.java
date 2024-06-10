@@ -21,7 +21,7 @@ public class PersonController {
     }
 
     @PostMapping("/login") // 로그인 제출 시
-    public String login(@RequestParam("Id") String userId, @RequestParam("Pw") String userPw, Model model, HttpServletRequest request) {
+    public String login(@RequestParam("Id") String userId, @RequestParam("Pw") String userPw, Model model, HttpServletRequest request) { //세션 사용 https://velog.io/@hanueleee/Spring-Spring%EC%97%90%EC%84%9C-Session-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
         if (userId.isEmpty() || userPw.isEmpty()) { // 값이 비어있는 경우
             model.addAttribute("error", "아이디와 비밀번호를 모두 입력해주세요");
             return "error";
