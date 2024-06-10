@@ -21,6 +21,7 @@
         <td> <a th:href="@{/BookDetail/{bookId}(bookId=${borrows.book.bookId})}">[[${borrows.book.title}]]</a> </td>
         <td th:text="${#dates.format(borrows.borrowDate, 'yyyy-MM-dd')}"></td>
         <td th:text="${#dates.format(borrows.returnDate, 'yyyy-MM-dd')}"></td>
+<!--        https://ssd0908.tistory.com/entry/thymeleaf-%ED%83%80%EC%9E%84%EB%A6%AC%ED%94%84-%EB%82%A0%EC%A7%9C-date-format-%EB%B3%80%ED%99%98-->
         <td>
             <form action="/return" method="post">
                 <input type="hidden" name="userId" th:value="${session.userId}" />
